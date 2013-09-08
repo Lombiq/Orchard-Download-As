@@ -1,0 +1,12 @@
+﻿Name: Download as...
+AntiForgery: enabled
+Author: Lombiq
+Website: https://orcharddownloadas.codeplex.com/
+Version: 1.0
+OrchardVersion: 1.7
+Description: Provides users the ability to download content items as a variety of files.
+Features:
+    Lombiq.DownloadAs:
+		Name: Download as...
+        Description: Provides users the ability to download content items as a variety of files.
+		Category: Content
