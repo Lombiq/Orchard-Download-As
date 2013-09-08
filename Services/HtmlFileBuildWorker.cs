@@ -80,7 +80,7 @@ namespace Lombiq.DownloadAs.Services
 
                     foreach (var content in contents)
                     {
-                        new ShapePartialResult(controller, contentManager.BuildDisplay(content))
+                        new ShapePartialResult(controller, contentManager.BuildDisplay(content, "File-html"))
                             .ExecuteResult(controller.ControllerContext); 
                     }
 

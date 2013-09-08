@@ -11,7 +11,6 @@ using Orchard.Themes;
 
 namespace Lombiq.DownloadAs.Controllers
 {
-    [Themed]
     public class TestController : Controller
     {
         private readonly IContentManager _contentManager;
@@ -25,18 +24,10 @@ namespace Lombiq.DownloadAs.Controllers
         }
 
 
-        public ViewResult Index()
+        public FileResult Index()
         {
-            var result = _fileBuilder.Build(_contentManager.Get(15), "html");
-            using (var readStream = result.OpenRead())
-            using (var stream = new MemoryStream())
-            {
-                readStream.CopyTo(stream);
-                var z = Encoding.UTF8.GetString(stream.ToArray());
-                var y = z;
-            }
-
-            return View();
+            var result = _fileBuilder.BuildRecursive(_contentManager.Get(16), "html");
+            return File(result.OpenRead(), result.MimeType, "testfile.html");
         }
     }
 }

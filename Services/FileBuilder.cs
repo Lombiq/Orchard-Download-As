@@ -13,6 +13,7 @@ namespace Lombiq.DownloadAs.Services
 {
     public class FileBuilder : IFileBuilder
     {
+        private readonly IContainerFlattener _flattener;
         private readonly IEnumerable<IFileBuildWorker> _fileBuilderWorkers;
         private readonly IStorageProvider _storageProvider;
         private readonly IClock _clock;
@@ -22,10 +23,12 @@ namespace Lombiq.DownloadAs.Services
 
 
         public FileBuilder(
+            IContainerFlattener flattener,
             IEnumerable<IFileBuildWorker> fileBuilderWorkers,
             IStorageProvider storageProvider,
             IClock clock)
         {
+            _flattener = flattener;
             _fileBuilderWorkers = fileBuilderWorkers;
             _storageProvider = storageProvider;
             _clock = clock;
@@ -34,10 +37,20 @@ namespace Lombiq.DownloadAs.Services
 
         public IFileResult Build(IContent content, string extension)
         {
-            if (content == null) throw new ArgumentNullException("content");
-            if (string.IsNullOrEmpty(extension)) throw new ArgumentNullException("extensions");
+            ThrowIfInvalidArguments(content, extension);
+            return Build(new[] { content }, extension);
+        }
 
-            var filePath = CacheFolderPath + content.ContentItem + "." + extension;
+        public IFileResult BuildRecursive(IContent content, string extension)
+        {
+            ThrowIfInvalidArguments(content, extension);
+            return Build(_flattener.Flatten(content), extension);
+        }
+
+
+        private IFileResult Build(IEnumerable<IContent> contents, string extension)
+        {
+            var filePath = CacheFolderPath + string.Join("-", contents.Select(content => content.ContentItem.Id)) + "." + extension;
             var mimeType = MimeAssistant.GetMimeType(filePath);
 
             if (_storageProvider.FileExists(filePath))
@@ -57,8 +70,6 @@ namespace Lombiq.DownloadAs.Services
 
             if (worker == null) throw new NotSupportedException("There is no worker for building a file of type " + extension + ".");
 
-            var contents = new[] { content };
-
             var stream = worker.Build(contents);
 
             var newFile = _storageProvider.CreateFile(filePath);
@@ -72,6 +83,13 @@ namespace Lombiq.DownloadAs.Services
                 stream.Position = 0;
                 return stream;
             }, mimeType);
+        }
+
+
+        private static void ThrowIfInvalidArguments(IContent content, string extension)
+        {
+            if (content == null) throw new ArgumentNullException("content");
+            if (string.IsNullOrEmpty(extension)) throw new ArgumentNullException("extensions");
         }
 
 

@@ -1,0 +1,9 @@
+﻿<Placement>
+  <Match DisplayType="File-html">
+    <Place Parts_Title="Header:5"
+           Parts_Blogs_Blog_Description="Content:before"
+           Parts_Common_Body_Summary="-"
+           Parts_Common_Body="Content:5"
+           Parts_Common_Metadata="Meta:2"/>
+  </Match>
+</Placement>
