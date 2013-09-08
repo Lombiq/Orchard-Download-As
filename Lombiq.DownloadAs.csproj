@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -19,6 +19,11 @@
     <OldToolsVersion>4.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -65,12 +70,6 @@
     <Content Include="Styles\Web.config" />
     <Content Include="Properties\AssemblyInfo.cs" />
     <Content Include="Module.txt" />
-    <Folder Include="Properties" />
-    <Folder Include="Controllers" />
-    <Folder Include="Views" />
-    <Folder Include="Models" />
-    <Folder Include="Scripts" />
-    <Folder Include="Styles" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Orchard\Orchard.Framework.csproj">
@@ -81,6 +80,23 @@
       <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
       <Name>Orchard.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Piedone.HelpfulLibraries\Piedone.HelpfulLibraries.csproj">
+      <Project>{ea61ad10-39d6-41a9-b12b-227f50c54158}</Project>
+      <Name>Piedone.HelpfulLibraries</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Models\FileBuildWorkerDescriptor.cs" />
+    <Compile Include="Models\IFileBuildWorkerDescriptor.cs" />
+    <Compile Include="Models\IFileResult.cs" />
+    <Compile Include="Services\FileBuilder.cs" />
+    <Compile Include="Services\HtmlFileBuildWorker.cs" />
+    <Compile Include="Services\IFileBuilder.cs" />
+    <Compile Include="Services\IFileBuildWorker.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Test\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

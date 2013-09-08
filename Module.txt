@@ -10,3 +10,4 @@ Features:
 		Name: Download as...
         Description: Provides users the ability to download content items as a variety of files.
 		Category: Content
+		Dependencies: Piedone.HelpfulLibraries.Utilities
