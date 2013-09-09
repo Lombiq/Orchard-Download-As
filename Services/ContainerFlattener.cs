@@ -8,6 +8,7 @@ using Orchard.ContentManagement;
 using Orchard.ContentManagement.Aspects;
 using Orchard.Core.Common.Models;
 using Orchard.Settings;
+using Piedone.HelpfulLibraries.Contents;
 
 namespace Lombiq.DownloadAs.Services
 {

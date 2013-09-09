@@ -18,6 +18,7 @@ using Orchard.Environment.Extensions;
 using Orchard.Localization;
 using Orchard.Mvc;
 using Orchard.Settings;
+using Piedone.HelpfulLibraries.Contents;
 
 namespace Lombiq.DownloadAs.Services
 {

@@ -97,10 +97,8 @@
     <Compile Include="Models\IFileBuildWorkerDescriptor.cs" />
     <Compile Include="Models\IFileResult.cs" />
     <Compile Include="Services\ContainerFlattener.cs" />
-    <Compile Include="Services\ShapeOutputGenerator.cs" />
     <Compile Include="Services\FileBuilder.cs" />
     <Compile Include="Services\HtmlFileBuildWorker.cs" />
-    <Compile Include="Services\IShapeOutputGenerator.cs" />
     <Compile Include="Services\IFileBuilder.cs" />
     <Compile Include="Services\IFileBuildWorker.cs" />
     <Compile Include="Services\IContainerFlattener.cs" />

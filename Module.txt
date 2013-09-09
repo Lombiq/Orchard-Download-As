@@ -10,7 +10,7 @@ Features:
 		Name: Download as...
         Description: Provides users the ability to download content items as a variety of files. Base feature.
 		Category: Content
-		Dependencies: Piedone.HelpfulLibraries.Utilities
+		Dependencies: Piedone.HelpfulLibraries.Utilities, Piedone.HelpfulLibraries.Contents
 	Lombiq.DownloadAs.Html:
 		Name: Download as HTML
         Description: Provides users the ability to download content items as HTML files.
