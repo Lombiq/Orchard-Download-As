@@ -43,19 +43,19 @@ namespace Lombiq.DownloadAs.Services
         public IFileResult Build(IContent content, string extension)
         {
             ThrowIfInvalidArguments(content, extension);
-            return Build(new[] { content }, extension);
+            return Build(content, extension, false);
         }
 
         public IFileResult BuildRecursive(IContent content, string extension)
         {
             ThrowIfInvalidArguments(content, extension);
-            return Build(_flattener.Flatten(content), extension);
+            return Build(content, extension, true);
         }
 
 
-        private IFileResult Build(IEnumerable<IContent> contents, string extension)
+        private IFileResult Build(IContent content, string extension, bool recursive)
         {
-            var filePath = CacheFolderPath + string.Join("-", contents.Select(content => content.ContentItem.Id)) + "." + extension;
+            var filePath = CacheFolderPath + content.ContentItem.Id + "-" + recursive + "." + extension;
             var mimeType = MimeAssistant.GetMimeType(filePath);
 
             if (_storageProvider.FileExists(filePath))
@@ -70,6 +70,10 @@ namespace Lombiq.DownloadAs.Services
                     _storageProvider.DeleteFile(filePath);
                 }
             }
+
+            IEnumerable<IContent> contents;
+            if (recursive) contents = _flattener.Flatten(content);
+            else contents = new[] { content };
 
             var worker = _fileBuilderWorkers.Where(w => string.Compare(w.Descriptor.SupportedFileExtension, extension, StringComparison.OrdinalIgnoreCase) == 0).LastOrDefault();
 
