@@ -81,7 +81,7 @@ namespace Lombiq.DownloadAs.Services
                                     var alias = uri.LocalPath.TrimStart('/');
                                     if (aliases.ContainsKey(alias))
                                     {
-                                        items.Add(aliases[alias].Content);
+                                        items.AddRange(FlattenOneLevel(aliases[alias].Content));
                                     }
                                 }
                             }

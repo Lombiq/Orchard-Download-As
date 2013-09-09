@@ -35,6 +35,11 @@ namespace Lombiq.DownloadAs.Services
         }
 
 
+        public IEnumerable<IFileBuildWorkerDescriptor> GetWorkers()
+        {
+            return _fileBuilderWorkers.Select(worker => worker.Descriptor);
+        }
+
         public IFileResult Build(IContent content, string extension)
         {
             ThrowIfInvalidArguments(content, extension);

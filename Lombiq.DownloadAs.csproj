@@ -90,6 +90,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\DownloadController.cs" />
+    <Compile Include="Drivers\DownloadLinkPartDriver.cs" />
+    <Compile Include="Migrations.cs" />
+    <Compile Include="Models\DownloadLinkPart.cs" />
     <Compile Include="Models\FileBuildWorkerDescriptor.cs" />
     <Compile Include="Models\IFileBuildWorkerDescriptor.cs" />
     <Compile Include="Models\IFileResult.cs" />
@@ -110,6 +113,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\DownloadAs.ContentsWrapper.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.DownloadLink.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
