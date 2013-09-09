@@ -9,11 +9,13 @@ using System.Web.Routing;
 using System.Web.UI;
 using Lombiq.DownloadAs.Models;
 using Orchard.ContentManagement;
+using Orchard.Environment.Extensions;
 using Orchard.Localization;
 using Orchard.Mvc;
 
 namespace Lombiq.DownloadAs.Services
 {
+    [OrchardFeature("Lombiq.DownloadAs.Html")]
     public class HtmlFileBuildWorker : IFileBuildWorker
     {
         private readonly IHttpContextAccessor _hca;
