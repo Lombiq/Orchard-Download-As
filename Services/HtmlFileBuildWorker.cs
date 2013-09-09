@@ -145,7 +145,9 @@ namespace Lombiq.DownloadAs.Services
                     return contentShape;
                 });
 
-            var shape = _shapeFactory.DownloadAs_ContentsWrapper(ContentShapes: contentShapes);
+            var shape = _shapeFactory.DownloadAs_ContentsWrapper(
+                Title: contentManager.GetItemMetadata(contents.First()).DisplayText, 
+                ContentShapes: contentShapes);
             shape.Metadata.Alternates.Add("DownloadAs_ContentsWrapper__html");
             return _shapeOutputGenerator.GenerateOutput(shape);
         }

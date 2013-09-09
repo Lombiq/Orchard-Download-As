@@ -2,8 +2,19 @@
     var shapes = (IEnumerable<dynamic>)Model.ContentShapes;
 }
 
-@foreach (var shape in shapes)
-{
-    <a id="content-item-top-@shape.ContentItem.Id"></a>
-    @Display(shape);
-}
+<!DOCTYPE html>
+<html lang="@WorkContext.CurrentCulture">
+<head>
+    <meta charset="utf-8" />
+    <title>@Model.Title</title>
+</head>
+<body>
+
+    @foreach (var shape in shapes)
+    {
+        <a id="content-item-top-@shape.ContentItem.Id"></a>
+        @Display(shape);
+    }
+
+</body>
+</html>
