@@ -1,0 +1,9 @@
+﻿@{
+    var shapes = (IEnumerable<dynamic>)Model.ContentShapes;
+}
+
+@foreach (var shape in shapes)
+{
+    <a id="content-item-top-@shape.ContentItem.Id"></a>
+    @Display(shape);
+}
