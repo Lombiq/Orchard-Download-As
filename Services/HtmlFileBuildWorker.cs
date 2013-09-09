@@ -100,7 +100,7 @@ namespace Lombiq.DownloadAs.Services
                                         if (href != null)
                                         {
                                             Uri uri;
-                                            if (UrlIsInternal(itemUri, href, out uri))
+                                            if (UrlHelper.UrlIsInternal(itemUri, href, out uri))
                                             {
                                                 var alias = uri.LocalPath.TrimStart('/');
                                                 if (aliases.ContainsKey(alias))
@@ -125,7 +125,7 @@ namespace Lombiq.DownloadAs.Services
                                         if (src != null)
                                         {
                                             Uri uri;
-                                            if (UrlIsInternal(itemUri, src, out uri))
+                                            if (UrlHelper.UrlIsInternal(itemUri, src, out uri))
                                             {
                                                 element.SetAttributeValue("src", uri.ToString());
                                             }
@@ -148,21 +148,6 @@ namespace Lombiq.DownloadAs.Services
             var shape = _shapeFactory.DownloadAs_ContentsWrapper(ContentShapes: contentShapes);
             shape.Metadata.Alternates.Add("DownloadAs_ContentsWrapper__html");
             return _shapeOutputGenerator.GenerateOutput(shape);
-        }
-
-
-        private static bool UrlIsInternal(Uri itemUri, string url, out Uri uri)
-        {
-            if (Uri.IsWellFormedUriString(url, UriKind.Relative))
-            {
-                uri = new Uri(itemUri, url);
-                return true;
-            }
-            else
-            {
-                uri = new Uri(url);
-                return uri.Host == itemUri.Host;
-            }
         }
 
 

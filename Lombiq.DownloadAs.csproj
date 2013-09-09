@@ -101,6 +101,7 @@
     <Compile Include="Services\IFileBuilder.cs" />
     <Compile Include="Services\IFileBuildWorker.cs" />
     <Compile Include="Services\IContainerFlattener.cs" />
+    <Compile Include="UrlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Placement.info">
