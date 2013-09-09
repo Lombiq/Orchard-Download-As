@@ -25,6 +25,7 @@ namespace Lombiq.DownloadAs.Services
             var containedItems = container.ContentItem.ContentManager
                 .Query()
                 .Where<CommonPartRecord>(record => record.Container.Id == container.ContentItem.Id)
+                .OrderBy<CommonPartRecord>(record => record.Id)
                 .List<IContent>();
             foreach (var item in containedItems)
             {
