@@ -86,30 +86,21 @@ namespace Lombiq.DownloadAs.Services
                             var doc = new HtmlDocument();
                             doc.LoadHtml(context.ShapeMetadata.ChildContent.ToHtmlString());
 
-                            var links = doc.DocumentNode.SelectNodes("//a[@href]");
-                            if (links != null) // See: https://htmlagilitypack.codeplex.com/workitem/29175
+                            var aliasAspect = content.As<IAliasAspect>();
+                            if (aliasAspect != null)
                             {
-                                var aliasAspect = content.As<IAliasAspect>();
-                                if (aliasAspect != null)
+                                var itemUri = new Uri(siteUri, aliasAspect.Path);
+
+                                var links = doc.DocumentNode.SelectNodes("//a[@href]");
+                                if (links != null) // See: https://htmlagilitypack.codeplex.com/workitem/29175
                                 {
-                                    var itemUri = new Uri(siteUri, aliasAspect.Path);
                                     foreach (var link in links)
                                     {
                                         var href = link.GetAttributeValue("href", null);
                                         if (href != null)
                                         {
-                                            Uri uri = null;
-                                            if (Uri.IsWellFormedUriString(href, UriKind.Relative))
-                                            {
-                                                uri = new Uri(itemUri, href);
-                                            }
-                                            else
-                                            {
-                                                var linkUri = new Uri(href);
-                                                if (linkUri.Host == siteUri.Host) uri = linkUri;
-                                            }
-
-                                            if (uri != null) // The uri is an internal one
+                                            Uri uri;
+                                            if (UrlIsInternal(itemUri, href, out uri))
                                             {
                                                 var alias = uri.LocalPath.TrimStart('/');
                                                 if (aliases.ContainsKey(alias))
@@ -120,6 +111,23 @@ namespace Lombiq.DownloadAs.Services
                                                 {
                                                     link.SetAttributeValue("href", uri.ToString());
                                                 }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                var srcElements = doc.DocumentNode.SelectNodes("//*[@src]");
+                                if (srcElements != null)
+                                {
+                                    foreach (var element in srcElements)
+                                    {
+                                        var src = element.GetAttributeValue("src", null);
+                                        if (src != null)
+                                        {
+                                            Uri uri;
+                                            if (UrlIsInternal(itemUri, src, out uri))
+                                            {
+                                                element.SetAttributeValue("src", uri.ToString());
                                             }
                                         }
                                     }
@@ -140,6 +148,21 @@ namespace Lombiq.DownloadAs.Services
             var shape = _shapeFactory.DownloadAs_ContentsWrapper(ContentShapes: contentShapes);
             shape.Metadata.Alternates.Add("DownloadAs_ContentsWrapper__html");
             return _shapeOutputGenerator.GenerateOutput(shape);
+        }
+
+
+        private static bool UrlIsInternal(Uri itemUri, string url, out Uri uri)
+        {
+            if (Uri.IsWellFormedUriString(url, UriKind.Relative))
+            {
+                uri = new Uri(itemUri, url);
+                return true;
+            }
+            else
+            {
+                uri = new Uri(url);
+                return uri.Host == itemUri.Host;
+            }
         }
 
 
