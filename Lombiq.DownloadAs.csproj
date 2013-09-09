@@ -86,7 +86,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\DownloadController.cs" />
     <Compile Include="Models\FileBuildWorkerDescriptor.cs" />
     <Compile Include="Models\IFileBuildWorkerDescriptor.cs" />
     <Compile Include="Models\IFileResult.cs" />
