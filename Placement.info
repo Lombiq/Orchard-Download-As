@@ -6,7 +6,7 @@
            Parts_Common_Body="Content:5"
            Parts_Common_Metadata="Meta:2"/>
   </Match>
-  <Match DisplayType="FileContainerFlattening">
+  <Match DisplayType="File-ContainerFlattening">
     <Place Parts_Common_Body_Summary="-"
            Parts_Common_Body="Content:5"/>
   </Match>

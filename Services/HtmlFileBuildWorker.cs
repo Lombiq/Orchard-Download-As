@@ -147,12 +147,12 @@ namespace Lombiq.DownloadAs.Services
                     return contentShape;
                 });
 
-            var shape = _shapeFactory.DownloadAs_ContentsWrapper(
+            var shape = _shapeFactory.File_ContentsWrapper(
                 Title: contentManager.GetItemMetadata(firstContent).DisplayText, 
                 ContentShapes: contentShapes);
-            shape.Metadata.Alternates.Add("DownloadAs_ContentsWrapper__html");
-            shape.Metadata.Alternates.Add("DownloadAs_ContentsWrapper__html__" + firstContent.ContentItem.Id);
-            shape.Metadata.Alternates.Add("DownloadAs_ContentsWrapper__" + firstContent.ContentItem.Id);
+            shape.Metadata.Alternates.Add("File_ContentsWrapper__html");
+            shape.Metadata.Alternates.Add("File_ContentsWrapper__html__" + firstContent.ContentItem.Id);
+            shape.Metadata.Alternates.Add("File_ContentsWrapper__" + firstContent.ContentItem.Id);
             return _shapeOutputGenerator.GenerateOutput(shape);
         }
 

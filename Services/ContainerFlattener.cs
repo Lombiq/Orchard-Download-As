@@ -60,7 +60,7 @@ namespace Lombiq.DownloadAs.Services
 
                 var siteUri = new Uri(_siteService.GetSiteSettings().BaseUrl);
                 var doc = new HtmlDocument();
-                Stream outputStream = _shapeOutputGenerator.GenerateOutput(container.ContentItem.ContentManager.BuildDisplay(container, "FileContainerFlattening"));
+                Stream outputStream = _shapeOutputGenerator.GenerateOutput(container.ContentItem.ContentManager.BuildDisplay(container, "File-ContainerFlattening"));
                 doc.Load(outputStream);
 
                 var aliasAspect = container.As<IAliasAspect>();

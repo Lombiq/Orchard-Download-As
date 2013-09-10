@@ -110,7 +110,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\DownloadAs.ContentsWrapper.cshtml" />
+    <Content Include="Views\File.ContentsWrapper.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Parts.DownloadLink.cshtml" />
