@@ -19,6 +19,13 @@ namespace Lombiq.DownloadAs.Migrations
                     .WithDescription("Displays a download link for the content item.")
                 );
 
+            SchemaBuilder.CreateTable(typeof(DownloadAsSettingsPartRecord).Name,
+                table => table
+                    .ContentPartRecord()
+                    .Column<int>("CacheTimeoutMinutes")
+				);
+
+
             return 1;
         }
     }

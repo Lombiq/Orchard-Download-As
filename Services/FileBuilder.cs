@@ -7,27 +7,30 @@ using Lombiq.DownloadAs.Models;
 using Orchard.ContentManagement;
 using Orchard.FileSystems.Media;
 using Orchard.Services;
+using Orchard.Settings;
 using Piedone.HelpfulLibraries.Utilities;
 
 namespace Lombiq.DownloadAs.Services
 {
     public class FileBuilder : IFileBuilder
     {
+        private readonly ISiteService _siteService;
         private readonly IContainerFlattener _flattener;
         private readonly IEnumerable<IFileBuildWorker> _fileBuilderWorkers;
         private readonly IStorageProvider _storageProvider;
         private readonly IClock _clock;
 
         private const string CacheFolderPath = "_LombiqModules/DownloadAs/CacheFiles/";
-        private static readonly TimeSpan CacheDuration = new TimeSpan(0, 0, 1); // 1s only for testing
 
 
         public FileBuilder(
+            ISiteService siteService,
             IContainerFlattener flattener,
             IEnumerable<IFileBuildWorker> fileBuilderWorkers,
             IStorageProvider storageProvider,
             IClock clock)
         {
+            _siteService = siteService;
             _flattener = flattener;
             _fileBuilderWorkers = fileBuilderWorkers;
             _storageProvider = storageProvider;
@@ -61,7 +64,7 @@ namespace Lombiq.DownloadAs.Services
             if (_storageProvider.FileExists(filePath))
             {
                 var file = _storageProvider.GetFile(filePath);
-                if (file.GetLastUpdated().ToUniversalTime().Add(CacheDuration) >= _clock.UtcNow)
+                if (file.GetLastUpdated().ToUniversalTime().Add(_siteService.GetSiteSettings().As<DownloadAsSettingsPart>().CacheTimeout) >= _clock.UtcNow)
                 {
                     return new FileResult(() => file.OpenRead(), mimeType);
                 }

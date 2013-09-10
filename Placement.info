@@ -25,4 +25,7 @@
   <Match DisplayType="Detail">
     <Place Parts_DownloadLink="Meta:5"/>
   </Match>
+  
+  <!-- Settings -->
+  <Place Parts_DownloadAsSettings_Edit="Content:6"/>
 </Placement>
