@@ -5,7 +5,6 @@ using System.Web;
 using Orchard.Data.Migration;
 using Orchard.ContentManagement.MetaData;
 using Orchard.Core.Contents.Extensions;
-using Orchard.Data.Migration;
 using Lombiq.DownloadAs.Models;
 
 namespace Lombiq.DownloadAs

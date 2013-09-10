@@ -37,7 +37,7 @@ namespace Lombiq.DownloadAs.Services
                 _descriptor = new FileBuildWorkerDescriptor
                 {
                     SupportedFileExtension = "html",
-                    DisplayName = T("Html")
+                    DisplayName = T("HTML")
                 };
 
                 return _descriptor;
