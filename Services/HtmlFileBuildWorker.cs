@@ -66,7 +66,8 @@ namespace Lombiq.DownloadAs.Services
 
         public Stream Build(IEnumerable<IContent> contents)
         {
-            var contentManager = contents.First().ContentItem.ContentManager;
+            var firstContent = contents.First();
+            var contentManager = firstContent.ContentItem.ContentManager;
 
             var aliases = contents
                 .Where(content => content.As<IAliasAspect>() != null)
@@ -147,9 +148,11 @@ namespace Lombiq.DownloadAs.Services
                 });
 
             var shape = _shapeFactory.DownloadAs_ContentsWrapper(
-                Title: contentManager.GetItemMetadata(contents.First()).DisplayText, 
+                Title: contentManager.GetItemMetadata(firstContent).DisplayText, 
                 ContentShapes: contentShapes);
             shape.Metadata.Alternates.Add("DownloadAs_ContentsWrapper__html");
+            shape.Metadata.Alternates.Add("DownloadAs_ContentsWrapper__html__" + firstContent.ContentItem.Id);
+            shape.Metadata.Alternates.Add("DownloadAs_ContentsWrapper__" + firstContent.ContentItem.Id);
             return _shapeOutputGenerator.GenerateOutput(shape);
         }
 
