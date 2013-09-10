@@ -7,13 +7,15 @@ using Lombiq.DownloadAs.Models;
 using Orchard.ContentManagement;
 using Orchard.Environment.Extensions;
 using Orchard.Localization;
+using Orchard.Settings;
 
 namespace Lombiq.DownloadAs.Services
 {
-    [OrchardFeature("Lombiq.DownloadAs.Html")]
+    [OrchardFeature("Lombiq.DownloadAs.Pdf")]
     public class PdfFileBuilderWorker : IFileBuildWorker
     {
         private readonly IFlattenedHtmlGenerator _htmlGenerator;
+        private readonly ISiteService _siteService;
 
         private IFileBuildWorkerDescriptor _descriptor;
         public IFileBuildWorkerDescriptor Descriptor
@@ -35,9 +37,12 @@ namespace Lombiq.DownloadAs.Services
         public Localizer T { get; set; }
 
 
-        public PdfFileBuilderWorker(IFlattenedHtmlGenerator htmlGenerator)
+        public PdfFileBuilderWorker(
+            IFlattenedHtmlGenerator htmlGenerator,
+            ISiteService siteService)
         {  
             _htmlGenerator = htmlGenerator;
+            _siteService = siteService;
 
             T = NullLocalizer.Instance;
         }
@@ -45,6 +50,7 @@ namespace Lombiq.DownloadAs.Services
 
         public Stream Build(IEnumerable<IContent> contents)
         {
+            var apiKey = _siteService.GetSiteSettings().As<DownloadAsPdfSettingsPart>().CloudConvertApiKey;
             return _htmlGenerator.GenerateHtml(contents, Descriptor.SupportedFileExtension);
         }
     }

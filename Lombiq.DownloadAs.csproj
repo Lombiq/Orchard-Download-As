@@ -92,13 +92,17 @@
     <Compile Include="Controllers\DownloadController.cs" />
     <Compile Include="Drivers\DownloadAsSettingsPartDriver.cs" />
     <Compile Include="Drivers\DownloadLinkPartDriver.cs" />
+    <Compile Include="Drivers\DownloadAsPdfSettingsPartDriver.cs" />
+    <Compile Include="Handlers\DownloadAsPdfSettingsPartHandler.cs" />
     <Compile Include="Handlers\DownloadAsSettingsPartHandler.cs" />
     <Compile Include="Migrations\BaseMigrations.cs" />
+    <Compile Include="Migrations\PdfMigrations.cs" />
     <Compile Include="Models\DownloadAsSettingsPart.cs" />
     <Compile Include="Models\DownloadLinkPart.cs" />
     <Compile Include="Models\FileBuildWorkerDescriptor.cs" />
     <Compile Include="Models\IFileBuildWorkerDescriptor.cs" />
     <Compile Include="Models\IFileResult.cs" />
+    <Compile Include="Models\DownloadAsPdfSettingsPart.cs" />
     <Compile Include="Services\ContainerFlattener.cs" />
     <Compile Include="Services\FileBuilder.cs" />
     <Compile Include="Services\HtmlFileBuildWorker.cs" />
@@ -121,6 +125,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\EditorTemplates\Parts.DownloadAsSettings.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts.DownloadAsPdfSettings.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

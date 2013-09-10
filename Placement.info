@@ -27,5 +27,6 @@
   </Match>
   
   <!-- Settings -->
-  <Place Parts_DownloadAsSettings_Edit="Content:6"/>
+  <Place Parts_DownloadAsSettings_Edit="Content:6"
+         Parts_DownloadAsPdfSettings_Edit="Content:7"/>
 </Placement>
