@@ -1,4 +1,5 @@
 ﻿<Placement>
+  <!-- File represenations -->
   <Match DisplayType="File-html">
     <Place Parts_Title="Header:5"
            Parts_Blogs_Blog_Description="Content:before"
@@ -6,10 +7,21 @@
            Parts_Common_Body="Content:5"
            Parts_Common_Metadata="Meta:2"/>
   </Match>
+  <Match DisplayType="File-pdf">
+    <Place Parts_Title="Header:5"
+           Parts_Blogs_Blog_Description="Content:before"
+           Parts_Common_Body_Summary="-"
+           Parts_Common_Body="Content:5"
+           Parts_Common_Metadata="Meta:2"/>
+  </Match>
+  
+  <!-- Flattening -->
   <Match DisplayType="File-ContainerFlattening">
     <Place Parts_Common_Body_Summary="-"
            Parts_Common_Body="Content:5"/>
   </Match>
+  
+  <!-- DownloadLinkPart -->
   <Match DisplayType="Detail">
     <Place Parts_DownloadLink="Meta:5"/>
   </Match>

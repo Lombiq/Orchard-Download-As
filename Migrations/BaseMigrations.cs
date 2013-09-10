@@ -7,9 +7,9 @@ using Orchard.ContentManagement.MetaData;
 using Orchard.Core.Contents.Extensions;
 using Lombiq.DownloadAs.Models;
 
-namespace Lombiq.DownloadAs
+namespace Lombiq.DownloadAs.Migrations
 {
-    public class Migrations : DataMigrationImpl
+    public class BaseMigrations : DataMigrationImpl
     {
         public int Create()
         {

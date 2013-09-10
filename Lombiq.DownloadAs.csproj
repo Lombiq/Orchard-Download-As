@@ -91,7 +91,7 @@
   <ItemGroup>
     <Compile Include="Controllers\DownloadController.cs" />
     <Compile Include="Drivers\DownloadLinkPartDriver.cs" />
-    <Compile Include="Migrations.cs" />
+    <Compile Include="Migrations\BaseMigrations.cs" />
     <Compile Include="Models\DownloadLinkPart.cs" />
     <Compile Include="Models\FileBuildWorkerDescriptor.cs" />
     <Compile Include="Models\IFileBuildWorkerDescriptor.cs" />
@@ -102,6 +102,7 @@
     <Compile Include="Services\FlattenedHtmlGenerator.cs" />
     <Compile Include="Services\IFileBuilder.cs" />
     <Compile Include="Services\IFileBuildWorker.cs" />
+    <Compile Include="Services\PdfFileBuilderWorker.cs" />
     <Compile Include="UrlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
