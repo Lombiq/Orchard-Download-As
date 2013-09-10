@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using HtmlAgilityPack;
+using Orchard;
 using Orchard.ContentManagement;
 using Orchard.ContentManagement.Aspects;
 using Orchard.Core.Common.Models;
@@ -12,6 +13,12 @@ using Piedone.HelpfulLibraries.Contents;
 
 namespace Lombiq.DownloadAs.Services
 {
+    public interface IContainerFlattener : IDependency
+    {
+        IEnumerable<IContent> Flatten(IContent container);
+    }
+
+
     public class ContainerFlattener : IContainerFlattener
     {
         private readonly IShapeOutputGenerator _shapeOutputGenerator;
