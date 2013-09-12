@@ -18,6 +18,6 @@ Features:
 		Dependencies: Lombiq.DownloadAs
 	Lombiq.DownloadAs.Pdf:
 		Name: Download as PDF
-        Description: Provides users the ability to download content items as PDF files.
+        Description: Provides users the ability to download content items as PDF files. Uses CloudConvert (https://cloudconvert.org).
 		Category: Content
 		Dependencies: Lombiq.DownloadAs
