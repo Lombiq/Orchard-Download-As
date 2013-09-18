@@ -112,6 +112,7 @@
     <Compile Include="Services\FlattenedHtmlGenerator.cs" />
     <Compile Include="Services\IFileBuilder.cs" />
     <Compile Include="Services\IFileBuildWorker.cs" />
+    <Compile Include="Services\MarkdownFileBuilderWorker.cs" />
     <Compile Include="Services\PdfFileBuilderWorker.cs" />
     <Compile Include="UrlHelper.cs" />
   </ItemGroup>

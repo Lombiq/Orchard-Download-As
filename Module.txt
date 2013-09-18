@@ -21,3 +21,8 @@ Features:
         Description: Provides users the ability to download content items as PDF files. Uses CloudConvert (https://cloudconvert.org).
 		Category: Content
 		Dependencies: Lombiq.DownloadAs
+	Lombiq.DownloadAs.Markdown:
+		Name: Download as Markdown
+        Description: Provides users the ability to download content items as MarkdownPDF files. Uses FuckYeahMarkdown (http://fuckyeahmarkdown.com/).
+		Category: Content
+		Dependencies: Lombiq.DownloadAs
