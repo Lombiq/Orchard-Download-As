@@ -5,7 +5,7 @@
     <ol>
         <li>
             @Html.LabelFor(m => m.CacheTimeoutMinutes, T("Cache timeout in minutes"))
-            @Html.TextBoxFor(m => m.CacheTimeoutMinutes, new { @class = "text-small" })
+            @Html.TextBoxFor(m => m.CacheTimeoutMinutes, new { @class = "small" })
             @Html.ValidationMessageFor(m => m.CacheTimeoutMinutes)
             <span class="hint">@T("Dowload files will be newly generated if this time span has passed. Set as 0 for no caching.")</span>
         </li>
