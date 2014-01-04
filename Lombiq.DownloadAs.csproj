@@ -49,8 +49,9 @@
       <HintPath>..\..\..\..\lib\htmlagilitypack\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="RestSharp">
-      <HintPath>Libs\RestSharp\RestSharp.dll</HintPath>
+    <Reference Include="RestSharp, Version=104.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lombiq.RestSharp\Libs\RestSharp\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
