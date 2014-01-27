@@ -27,19 +27,5 @@ namespace Lombiq.DownloadAs.Drivers
             updater.TryUpdateModel(part, Prefix, null, null);
             return Editor(part, shapeHelper);
         }
-
-        protected override void Exporting(DownloadAsPdfSettingsPart part, ExportContentContext context)
-        {
-            var element = context.Element(part.PartDefinition.Name);
-
-            element.SetAttributeValue("CloudConvertApiKey", part.CloudConvertApiKey);
-        }
-
-        protected override void Importing(DownloadAsPdfSettingsPart part, ImportContentContext context)
-        {
-            var partName = part.PartDefinition.Name;
-
-            context.ImportAttribute(partName, "CloudConvertApiKey", value => part.CloudConvertApiKey = value);
-        }
     }
 }

@@ -10,20 +10,12 @@ using Orchard.Environment.Extensions;
 namespace Lombiq.DownloadAs.Models
 {
     [OrchardFeature("Lombiq.DownloadAs.Pdf")]
-    public class DownloadAsPdfSettingsPart : ContentPart<DownloadAsPdfSettingsPartRecord>
+    public class DownloadAsPdfSettingsPart : ContentPart
     {
-        [StringLength(2048)]
         public string CloudConvertApiKey
         {
-            get { return Record.CloudConvertApiKey; }
-            set { Record.CloudConvertApiKey = value; }
+            get { return this.Retrieve(x => x.CloudConvertApiKey); }
+            set { this.Store(x => x.CloudConvertApiKey, value); }
         }
-    }
-
-
-    [OrchardFeature("Lombiq.DownloadAs.Pdf")]
-    public class DownloadAsPdfSettingsPartRecord : ContentPartRecord
-    {
-        public virtual string CloudConvertApiKey { get; set; }
     }
 }

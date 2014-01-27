@@ -13,14 +13,16 @@ namespace Lombiq.DownloadAs.Migrations
     {
         public int Create()
         {
-            SchemaBuilder.CreateTable(typeof(DownloadAsPdfSettingsPartRecord).Name,
-                table => table
-                    .ContentPartRecord()
-                    .Column<string>("CloudConvertApiKey", column => column.WithLength(2048))
-                );
+            // Only creation of the DownloadAsPdfSettingsPartRecord table was here. 
 
+            return 2;
+        }
 
-            return 1;
+        public int UpdateFrom1()
+        {
+            SchemaBuilder.DropTable("DownloadAsPdfSettingsPartRecord");
+
+            return 2;
         }
     }
 }

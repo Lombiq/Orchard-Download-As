@@ -7,29 +7,17 @@ using Orchard.ContentManagement.Records;
 
 namespace Lombiq.DownloadAs.Models
 {
-    public class DownloadAsSettingsPart : ContentPart<DownloadAsSettingsPartRecord>
+    public class DownloadAsSettingsPart : ContentPart
     {
         public int CacheTimeoutMinutes
         {
-            get { return Record.CacheTimeoutMinutes; }
-            set { Record.CacheTimeoutMinutes = value; }
+            get { return this.Retrieve(x => x.CacheTimeoutMinutes, 10); }
+            set { this.Store(x => x.CacheTimeoutMinutes, value); }
         }
 
         public TimeSpan CacheTimeout
         {
             get { return new TimeSpan(0, CacheTimeoutMinutes, 0); }
-        }
-    }
-
-
-    public class DownloadAsSettingsPartRecord : ContentPartRecord
-    {
-        public virtual int CacheTimeoutMinutes { get; set; }
-
-
-        public DownloadAsSettingsPartRecord()
-        {
-            CacheTimeoutMinutes = 10;
         }
     }
 }

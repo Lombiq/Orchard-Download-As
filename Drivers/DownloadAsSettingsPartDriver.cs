@@ -25,19 +25,5 @@ namespace Lombiq.DownloadAs.Drivers
             updater.TryUpdateModel(part, Prefix, null, null);
             return Editor(part, shapeHelper);
         }
-
-        protected override void Exporting(DownloadAsSettingsPart part, ExportContentContext context)
-        {
-            var element = context.Element(part.PartDefinition.Name);
-
-            element.SetAttributeValue("CacheTimeoutMinutes", part.CacheTimeoutMinutes);
-        }
-
-        protected override void Importing(DownloadAsSettingsPart part, ImportContentContext context)
-        {
-            var partName = part.PartDefinition.Name;
-
-            context.ImportAttribute(partName, "CacheTimeoutMinutes", value => part.CacheTimeoutMinutes = int.Parse(value));
-        }
     }
 }

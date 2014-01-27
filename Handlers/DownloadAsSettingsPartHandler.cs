@@ -10,9 +10,8 @@ namespace Lombiq.DownloadAs.Handlers
 {
     public class DownloadAsSettingsPartHandler : ContentHandler
     {
-        public DownloadAsSettingsPartHandler(IRepository<DownloadAsSettingsPartRecord> repository)
+        public DownloadAsSettingsPartHandler()
         {
-            Filters.Add(StorageFilter.For(repository));
             Filters.Add(new ActivatingFilter<DownloadAsSettingsPart>("Site"));
         }
     }
