@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using Lombiq.DownloadAs.Services;
@@ -32,6 +34,8 @@ namespace Lombiq.DownloadAs.Controllers
 
         public ActionResult DownloadAs(int id, string extension)
         {
+            if (!Regex.IsMatch(extension, @"^\w+$")) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             var item = _contentManager.Get(id);
 
             if (!_authorizer.Authorize(Orchard.Core.Contents.Permissions.ViewContent, item)) return new HttpUnauthorizedResult();
