@@ -32,11 +32,13 @@ namespace Lombiq.DownloadAs.Controllers
         }
 
 
-        public ActionResult DownloadAs(int id, string extension)
+        public ActionResult DownloadAs(int? id, string extension)
         {
-            if (!Regex.IsMatch(extension, @"^\w+$")) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (id == null) return HttpNotFound();
 
-            var item = _contentManager.Get(id);
+            if (string.IsNullOrEmpty(extension) || !Regex.IsMatch(extension, @"^\w+$")) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var item = _contentManager.Get(id.Value);
 
             if (!_authorizer.Authorize(Orchard.Core.Contents.Permissions.ViewContent, item)) return new HttpUnauthorizedResult();
 
