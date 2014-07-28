@@ -36,7 +36,10 @@ namespace Lombiq.DownloadAs.Controllers
         {
             if (id == null) return HttpNotFound();
 
-            if (string.IsNullOrEmpty(extension) || !Regex.IsMatch(extension, @"^\w+$")) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (string.IsNullOrEmpty(extension) || !Regex.IsMatch(extension, @"^\w+$") || !_fileBuilder.HasWorkerFor(extension))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
             var item = _contentManager.Get(id.Value);
 

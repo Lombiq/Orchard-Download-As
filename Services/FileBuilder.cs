@@ -43,6 +43,11 @@ namespace Lombiq.DownloadAs.Services
             return _fileBuilderWorkers.Select(worker => worker.Descriptor);
         }
 
+        public bool HasWorkerFor(string extension)
+        {
+            return _fileBuilderWorkers.Any(w => string.Equals(w.Descriptor.SupportedFileExtension, extension, StringComparison.OrdinalIgnoreCase));
+        }
+
         public IFileResult Build(IContent content, string extension)
         {
             ThrowIfInvalidArguments(content, extension);
@@ -78,7 +83,7 @@ namespace Lombiq.DownloadAs.Services
             if (recursive) contents = _flattener.Flatten(content);
             else contents = new[] { content };
 
-            var worker = _fileBuilderWorkers.Where(w => string.Compare(w.Descriptor.SupportedFileExtension, extension, StringComparison.OrdinalIgnoreCase) == 0).LastOrDefault();
+            var worker = _fileBuilderWorkers.Where(w => string.Equals(w.Descriptor.SupportedFileExtension, extension, StringComparison.OrdinalIgnoreCase)).LastOrDefault();
 
             if (worker == null) throw new NotSupportedException("There is no worker for building a file of type " + extension + ".");
 
