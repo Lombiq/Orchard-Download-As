@@ -17,8 +17,8 @@ namespace Lombiq.DownloadAs.Drivers
         {
             _fileBuilder = fileBuilder;
         }
-	
-			
+    
+            
         protected override DriverResult Display(DownloadLinkPart part, string displayType, dynamic shapeHelper)
         {
             return ContentShape("Parts_DownloadLink",
