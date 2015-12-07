@@ -1,7 +1,7 @@
 Name: Download as...
 AntiForgery: enabled
 Author: Lombiq
-Website: https://orcharddownloadas.codeplex.com/
+Website: https://github.com/Lombiq/Orchard-Download-As
 Version: 1.0
 OrchardVersion: 1.9.0
 Description: Provides users the ability to download content items as a variety of files.
