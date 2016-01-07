@@ -7,7 +7,7 @@
             @Html.LabelFor(m => m.CloudConvertApiKey, T("CloudConvert API key"))
             @Html.TextBoxFor(m => m.CloudConvertApiKey, new { @class = "text large", autocomplete = "off" })
             @Html.ValidationMessageFor(m => m.CloudConvertApiKey)
-            <span class="hint">@T("The personal API key from CloudConvert to use it for accessing the conversion API.")</span>
+            @Html.Hint(T("The personal API key from CloudConvert to use it for accessing the conversion API."))
         </li>
     </ol>
 </fieldset>
