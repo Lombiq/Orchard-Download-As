@@ -9,7 +9,7 @@ using Orchard.ContentManagement;
 
 namespace Lombiq.DownloadAs.Services
 {
-    public interface IFileBuildWorker : IDependency
+    public interface IFileBuilderWorker : IDependency
     {
         IFileBuildWorkerDescriptor Descriptor { get; }
         Stream Build(IEnumerable<IContent> contents);

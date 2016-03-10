@@ -16,7 +16,7 @@ namespace Lombiq.DownloadAs.Services
     {
         private readonly ISiteService _siteService;
         private readonly IContainerFlattener _flattener;
-        private readonly IEnumerable<IFileBuildWorker> _fileBuilderWorkers;
+        private readonly IEnumerable<IFileBuilderWorker> _fileBuilderWorkers;
         private readonly IStorageProvider _storageProvider;
         private readonly IClock _clock;
 
@@ -26,7 +26,7 @@ namespace Lombiq.DownloadAs.Services
         public FileBuilder(
             ISiteService siteService,
             IContainerFlattener flattener,
-            IEnumerable<IFileBuildWorker> fileBuilderWorkers,
+            IEnumerable<IFileBuilderWorker> fileBuilderWorkers,
             IStorageProvider storageProvider,
             IClock clock)
         {

@@ -22,7 +22,7 @@ using Orchard.Settings;
 namespace Lombiq.DownloadAs.Services
 {
     [OrchardFeature("Lombiq.DownloadAs.Html")]
-    public class HtmlFileBuildWorker : IFileBuildWorker
+    public class HtmlFileBuilderWorker : IFileBuilderWorker
     {
         private readonly IFlattenedHtmlGenerator _htmlGenerator;
 
@@ -46,7 +46,7 @@ namespace Lombiq.DownloadAs.Services
         public Localizer T { get; set; }
 
 
-        public HtmlFileBuildWorker(IFlattenedHtmlGenerator htmlGenerator)
+        public HtmlFileBuilderWorker(IFlattenedHtmlGenerator htmlGenerator)
         {
             _htmlGenerator = htmlGenerator;
 

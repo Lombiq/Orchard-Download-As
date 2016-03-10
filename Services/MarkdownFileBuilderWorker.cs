@@ -13,7 +13,7 @@ using Orchard.Localization;
 namespace Lombiq.DownloadAs.Services
 {
     [OrchardFeature("Lombiq.DownloadAs.Markdown")]
-    public class MarkdownFileBuilderWorker : IFileBuildWorker
+    public class MarkdownFileBuilderWorker : IFileBuilderWorker
     {
         private readonly IFlattenedHtmlGenerator _htmlGenerator;
 

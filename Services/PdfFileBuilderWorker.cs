@@ -17,7 +17,7 @@ using RestSharp;
 namespace Lombiq.DownloadAs.Services
 {
     [OrchardFeature("Lombiq.DownloadAs.Pdf")]
-    public class PdfFileBuilderWorker : IFileBuildWorker
+    public class PdfFileBuilderWorker : IFileBuilderWorker
     {
         private readonly IFlattenedHtmlGenerator _htmlGenerator;
         private readonly ISiteService _siteService;
