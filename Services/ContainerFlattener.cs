@@ -8,8 +8,8 @@ using Orchard;
 using Orchard.ContentManagement;
 using Orchard.ContentManagement.Aspects;
 using Orchard.Core.Common.Models;
+using Orchard.DisplayManagement;
 using Orchard.Settings;
-using Piedone.HelpfulLibraries.Contents;
 
 namespace Lombiq.DownloadAs.Services
 {
@@ -21,15 +21,15 @@ namespace Lombiq.DownloadAs.Services
 
     public class ContainerFlattener : IContainerFlattener
     {
-        private readonly IShapeOutputGenerator _shapeOutputGenerator;
+        private readonly IShapeDisplay _shapeDisplay;
         private readonly ISiteService _siteService;
 
 
         public ContainerFlattener(
-            IShapeOutputGenerator shapeOutputGenerator,
+            IShapeDisplay shapeDisplay,
             ISiteService siteService)
         {
-            _shapeOutputGenerator = shapeOutputGenerator;
+            _shapeDisplay = shapeDisplay;
             _siteService = siteService;
         }
 
@@ -52,8 +52,8 @@ namespace Lombiq.DownloadAs.Services
                 .OrderBy<CommonPartRecord>(record => record.Id)
                 .List<IContent>();
 
-            // If the contained items are linked from the container, take the links' order into account. Also if links are present only linked items
-            // will be processed.
+            // If the contained items are linked from the container, take the links' order into account. Also if links 
+            // are present only linked items will be processed.
             if (containedItems.Any())
             {
                 var aliases = containedItems
@@ -67,8 +67,8 @@ namespace Lombiq.DownloadAs.Services
 
                 var siteUri = new Uri(_siteService.GetSiteSettings().BaseUrl);
                 var doc = new HtmlDocument();
-                Stream outputStream = _shapeOutputGenerator.GenerateOutput(container.ContentItem.ContentManager.BuildDisplay(container, "File-ContainerFlattening"));
-                doc.Load(outputStream);
+                var html = _shapeDisplay.Display(container.ContentItem.ContentManager.BuildDisplay(container, "File-ContainerFlattening"));
+                doc.LoadHtml(html);
 
                 var aliasAspect = container.As<IAliasAspect>();
                 if (aliasAspect != null)

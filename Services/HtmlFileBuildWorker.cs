@@ -18,7 +18,6 @@ using Orchard.Environment.Extensions;
 using Orchard.Localization;
 using Orchard.Mvc;
 using Orchard.Settings;
-using Piedone.HelpfulLibraries.Contents;
 
 namespace Lombiq.DownloadAs.Services
 {
@@ -57,7 +56,7 @@ namespace Lombiq.DownloadAs.Services
 
         public Stream Build(IEnumerable<IContent> contents)
         {
-            return _htmlGenerator.GenerateHtml(contents, Descriptor.SupportedFileExtension);
+            return new MemoryStream(Encoding.UTF8.GetBytes(_htmlGenerator.GenerateHtml(contents, Descriptor.SupportedFileExtension)));
         }
     }
 }

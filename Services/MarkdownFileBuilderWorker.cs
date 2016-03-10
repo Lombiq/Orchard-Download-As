@@ -47,12 +47,10 @@ namespace Lombiq.DownloadAs.Services
 
         public Stream Build(IEnumerable<IContent> contents)
         {
-            using (var htmlStream = _htmlGenerator.GenerateHtml(contents, Descriptor.SupportedFileExtension))
-            using (var streamReader = new StreamReader(htmlStream))
             using (var wc = new WebClient())
             {
                 var fields = new NameValueCollection();
-                fields.Add("html", streamReader.ReadToEnd());
+                fields.Add("html", _htmlGenerator.GenerateHtml(contents, Descriptor.SupportedFileExtension));
                 return new MemoryStream(wc.UploadValues("http://fuckyeahmarkdown.com/go/", fields));
             }
         }

@@ -7,22 +7,22 @@ OrchardVersion: 1.9.0
 Description: Provides users the ability to download content items as a variety of files.
 Features:
     Lombiq.DownloadAs:
-		Name: Download as...
+        Name: Download as...
         Description: Provides users the ability to download content items as a variety of files. Base feature.
-		Category: Content
-		Dependencies: Piedone.HelpfulLibraries.Utilities, Piedone.HelpfulLibraries.Contents
-	Lombiq.DownloadAs.Html:
-		Name: Download as HTML
+        Category: Content
+        Dependencies: Piedone.HelpfulLibraries.Utilities
+    Lombiq.DownloadAs.Html:
+        Name: Download as HTML
         Description: Provides users the ability to download content items as HTML files.
-		Category: Content
-		Dependencies: Lombiq.DownloadAs
-	Lombiq.DownloadAs.Pdf:
-		Name: Download as PDF
+        Category: Content
+        Dependencies: Lombiq.DownloadAs
+    Lombiq.DownloadAs.Pdf:
+        Name: Download as PDF
         Description: Provides users the ability to download content items as PDF files. Uses CloudConvert (https://cloudconvert.org).
-		Category: Content
-		Dependencies: Lombiq.DownloadAs, Lombiq.RestSharp
-	Lombiq.DownloadAs.Markdown:
-		Name: Download as Markdown
+        Category: Content
+        Dependencies: Lombiq.DownloadAs, Lombiq.RestSharp
+    Lombiq.DownloadAs.Markdown:
+        Name: Download as Markdown
         Description: Provides users the ability to download content items as MarkdownPDF files. Uses FuckYeahMarkdown (http://fuckyeahmarkdown.com/).
-		Category: Content
-		Dependencies: Lombiq.DownloadAs
+        Category: Content
+        Dependencies: Lombiq.DownloadAs

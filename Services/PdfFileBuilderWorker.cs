@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading;
 using System.Web;
 using Lombiq.DownloadAs.Models;
@@ -54,7 +55,7 @@ namespace Lombiq.DownloadAs.Services
 
         public Stream Build(IEnumerable<IContent> contents)
         {
-            using (var htmlStream = _htmlGenerator.GenerateHtml(contents, Descriptor.SupportedFileExtension))
+            using (var htmlStream = new MemoryStream(Encoding.UTF8.GetBytes(_htmlGenerator.GenerateHtml(contents, Descriptor.SupportedFileExtension))))
             using (var tmpStream = new MemoryStream())
             {
                 htmlStream.CopyTo(tmpStream);

@@ -11,13 +11,12 @@ using Orchard.ContentManagement.Aspects;
 using Orchard.DisplayManagement;
 using Orchard.Localization;
 using Orchard.Settings;
-using Piedone.HelpfulLibraries.Contents;
 
 namespace Lombiq.DownloadAs.Services
 {
     public interface IFlattenedHtmlGenerator : IDependency
     {
-        Stream GenerateHtml(IEnumerable<IContent> contents, string extension);
+        string GenerateHtml(IEnumerable<IContent> contents, string extension);
     }
 
 
@@ -25,21 +24,21 @@ namespace Lombiq.DownloadAs.Services
     {
         private readonly ISiteService _siteService;
         private readonly dynamic _shapeFactory;
-        private readonly IShapeOutputGenerator _shapeOutputGenerator;
+        private readonly IShapeDisplay _shapeDisplay;
 
 
         public FlattenedHtmlGenerator(
             ISiteService siteService,
             IShapeFactory shapeFactory,
-            IShapeOutputGenerator shapeOutputGenerator)
+            IShapeDisplay shapeDisplay)
         {
             _siteService = siteService;
             _shapeFactory = shapeFactory;
-            _shapeOutputGenerator = shapeOutputGenerator;
+            _shapeDisplay = shapeDisplay;
         }
 
 
-        public Stream GenerateHtml(IEnumerable<IContent> contents, string extension)
+        public string GenerateHtml(IEnumerable<IContent> contents, string extension)
         {
             var firstContent = contents.First();
             var contentManager = firstContent.ContentItem.ContentManager;
@@ -129,7 +128,7 @@ namespace Lombiq.DownloadAs.Services
             shape.Metadata.Alternates.Add("File_ContentsWrapper__" + extension + " __" + firstContent.ContentItem.Id);
             shape.Metadata.Alternates.Add("File_ContentsWrapper__" + firstContent.ContentItem.Id);
 
-            return _shapeOutputGenerator.GenerateOutput(shape);
+            return _shapeDisplay.Display(shape);
         }
     }
 }
