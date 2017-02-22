@@ -1,23 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-using System.Web.UI;
-using HtmlAgilityPack;
 using Lombiq.DownloadAs.Models;
-using Orchard;
 using Orchard.ContentManagement;
-using Orchard.ContentManagement.Aspects;
-using Orchard.DisplayManagement;
-using Orchard.DisplayManagement.Implementation;
 using Orchard.Environment.Extensions;
 using Orchard.Localization;
-using Orchard.Mvc;
-using Orchard.Settings;
 
 namespace Lombiq.DownloadAs.Services
 {

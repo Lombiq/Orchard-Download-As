@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Lombiq.DownloadAs.Models;
+﻿using Lombiq.DownloadAs.Models;
 using Orchard.ContentManagement.Handlers;
-using Orchard.Data;
 
 namespace Lombiq.DownloadAs.Handlers
 {

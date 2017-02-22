@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Lombiq.DownloadAs.Models;
-using Orchard.Data.Migration;
+﻿using Orchard.Data.Migration;
 using Orchard.Environment.Extensions;
 
 namespace Lombiq.DownloadAs.Migrations

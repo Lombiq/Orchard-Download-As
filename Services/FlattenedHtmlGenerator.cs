@@ -9,7 +9,6 @@ using Orchard;
 using Orchard.ContentManagement;
 using Orchard.ContentManagement.Aspects;
 using Orchard.DisplayManagement;
-using Orchard.Localization;
 using Orchard.Settings;
 
 namespace Lombiq.DownloadAs.Services

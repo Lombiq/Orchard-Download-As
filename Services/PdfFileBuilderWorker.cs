@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
-using System.Web;
 using Lombiq.DownloadAs.Models;
 using Orchard;
 using Orchard.ContentManagement;

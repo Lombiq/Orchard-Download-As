@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
+﻿using System.Net;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Web.Mvc;
 using Lombiq.DownloadAs.Services;
 using Orchard.ContentManagement;
 using Orchard.Security;
-using Orchard.Themes;
 
 namespace Lombiq.DownloadAs.Controllers
 {

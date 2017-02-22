@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using Orchard.ContentManagement;
-using Orchard.ContentManagement.Records;
+﻿using Orchard.ContentManagement;
 using Orchard.Environment.Extensions;
 
 namespace Lombiq.DownloadAs.Models
