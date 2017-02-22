@@ -14,10 +14,15 @@ namespace Lombiq.DownloadAs
                 uri = new Uri(itemUri, url);
                 return true;
             }
-            else
+            else if (Uri.IsWellFormedUriString(url, UriKind.Absolute))
             {
                 uri = new Uri(url);
                 return uri.Host == itemUri.Host;
+            }
+            else
+            {
+                uri = null;
+                return false;
             }
         }
     }
